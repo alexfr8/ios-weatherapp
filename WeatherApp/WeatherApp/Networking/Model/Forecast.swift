@@ -12,41 +12,34 @@ import Foundation
 
 struct Forecast {
     let dt: Int
-    let temp: Temperature
-    let pressure: Double
-    let humidity  : Int
     let weather : [Weather]
-    let speed : Double
-    let deg : Int
-    let clouds : Int
-    let snow : Double
+    let clouds : Clouds
+    let main : Main
+    let wind : Wind
+    let dt_txt : String
+    
 }
 
 extension Forecast: Decodable {
     
     private enum ForecastResponseCodingKeys: String, CodingKey {
         case dt = "dt"
-        case temp = "temp"
-        case pressure = "pressure"
-        case humidity = "humidity"
         case weather = "weather"
-        case speed = "speed"
-        case deg = "deg"
         case clouds = "clouds"
-        case snow = "snow"
+        case main = "main"
+        case wind = "wind"
+        case dt_txt = "dt_txt"
+        
     }
     
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: ForecastResponseCodingKeys.self)
         
         dt  = try container.decode(Int.self, forKey: .dt)
-        temp = try container.decode(Temperature.self, forKey: .temp)
-        pressure = try container.decode(Double.self, forKey: .pressure)
-        humidity = try container.decode(Int.self, forKey: .humidity)
         weather = try container.decode([Weather].self, forKey: .weather)
-        speed = try container.decode(Double.self, forKey: .speed)
-        deg = try container.decode(Int.self, forKey: .deg)
-        clouds = try container.decode(Int.self, forKey: .clouds)
-        snow = try container.decode(Double.self, forKey: .snow)
+        clouds = try container.decode(Clouds.self, forKey: .clouds)
+        main = try container.decode(Main.self, forKey: .main)
+        wind = try container.decode(Wind.self, forKey: .wind)
+        dt_txt = try container.decode(String.self, forKey: .dt_txt)
     }
 }

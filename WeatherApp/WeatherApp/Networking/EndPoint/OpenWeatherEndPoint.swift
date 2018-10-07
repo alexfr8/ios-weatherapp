@@ -43,7 +43,7 @@ extension OpenWeatherEndPoint: EndPointType {
         switch self {
             
         case .forecastSevendDaysByCityName( _):
-            return "/data/2.5/forecast/daily"
+            return "/data/2.5/forecast"
                 //q=London&mode=xml&units=metric&cnt=7
         }
         

@@ -12,7 +12,7 @@ import Foundation
 
 struct SevenDaysForecasting {
     let cod : String
-    let message: Int
+    let message: Double
     let city: City
     let cnt : Int
     let list : [Forecast]
@@ -32,7 +32,7 @@ extension SevenDaysForecasting: Decodable {
         let container = try decoder.container(keyedBy: SevenDaysForecastingCodingKeys.self)
         
         cod = try container.decode(String.self, forKey: .cod)
-        message = try container.decode(Int.self, forKey: .message)
+        message = try container.decode(Double.self, forKey: .message)
         city = try container.decode(City.self, forKey: .city)
         cnt = try container.decode(Int.self, forKey: .cnt)
         list = try container.decode([Forecast].self, forKey: .list)
