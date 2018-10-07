@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Wk9-mu-HbK">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Qnw-Jm-3wF">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -9,21 +9,182 @@
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="Avenir.ttc">
+            <string>Avenir-Book</string>
+            <string>Avenir-Heavy</string>
+        </array>
+    </customFonts>
     <scenes>
-        <!--View Controller-->
+        <!--Home View Controller-->
         <scene sceneID="b0D-k6-Eq8">
             <objects>
-                <viewController id="Wk9-mu-HbK" sceneMemberID="viewController">
+                <viewController restorationIdentifier="HomeViewController" storyboardIdentifier="HomeViewController" id="Wk9-mu-HbK" customClass="HomeViewController" customModule="WeatherApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="vXH-6i-p9s">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="QKe-xs-iIa" userLabel="txtCitySearch">
+                                <rect key="frame" x="41" y="179" width="286" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="Wk9-mu-HbK" id="QRy-p8-nrA"/>
+                                    <outlet property="pasteDelegate" destination="Wk9-mu-HbK" id="GpJ-DL-yjb"/>
+                                    <outlet property="textDragDelegate" destination="Wk9-mu-HbK" id="mZo-71-6iy"/>
+                                    <outlet property="textDropDelegate" destination="Wk9-mu-HbK" id="enr-Fb-0Ag"/>
+                                </connections>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You need to insert the city name to find the next day forecasting" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gAD-co-9Yz" userLabel="lblText">
+                                <rect key="frame" x="16" y="97" width="336" height="55"/>
+                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wmy-Vm-jj1" userLabel="btnForecast" customClass="UIButtonRounded" customModule="WeatherApp" customModuleProvider="target">
+                                <rect key="frame" x="41" y="333" width="286" height="30"/>
+                                <color key="backgroundColor" red="0.4756349325" green="0.47564673419999998" blue="0.47564041610000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" title="Forecast">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <integer key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="btnForecast:" destination="Wk9-mu-HbK" eventType="touchUpInside" id="Vzn-WU-8eF"/>
+                                </connections>
+                            </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ico_search" highlightedImage="ico_search" translatesAutoresizingMaskIntoConstraints="NO" id="paJ-sL-eG8" userLabel="imgSearch">
+                                <rect key="frame" x="8" y="182" width="25" height="25"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="25" id="5ps-ms-Kf3"/>
+                                    <constraint firstAttribute="height" constant="25" id="aM8-6a-cu3"/>
+                                </constraints>
+                            </imageView>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nmq-bG-MZL" userLabel="btnClearText">
+                                <rect key="frame" x="327" y="182" width="25" height="25"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="25" id="Ita-Bq-EMt"/>
+                                    <constraint firstAttribute="height" constant="25" id="kil-Wg-CPq"/>
+                                </constraints>
+                                <state key="normal" title="Button" image="ico_clear"/>
+                                <connections>
+                                    <action selector="btnClear:" destination="Wk9-mu-HbK" eventType="touchUpInside" id="BFL-F7-cOF"/>
+                                </connections>
+                            </button>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="ERROR" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z0E-ES-huf">
+                                <rect key="frame" x="41" y="231" width="286" height="94"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="18"/>
+                                <color key="textColor" red="1" green="0.070276938799999994" blue="0.038486226210000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="gAD-co-9Yz" firstAttribute="leading" secondItem="yCP-fc-KEd" secondAttribute="leading" constant="16" id="CmO-Td-Bhj"/>
+                            <constraint firstItem="Nmq-bG-MZL" firstAttribute="trailing" secondItem="gAD-co-9Yz" secondAttribute="trailing" id="IQa-gz-nos"/>
+                            <constraint firstItem="QKe-xs-iIa" firstAttribute="top" secondItem="gAD-co-9Yz" secondAttribute="bottom" constant="27" id="KIN-Cn-IpY"/>
+                            <constraint firstItem="Nmq-bG-MZL" firstAttribute="centerY" secondItem="QKe-xs-iIa" secondAttribute="centerY" id="RKP-Rn-y1c"/>
+                            <constraint firstAttribute="trailing" secondItem="gAD-co-9Yz" secondAttribute="trailing" constant="23" id="STk-B3-Kr7"/>
+                            <constraint firstItem="QKe-xs-iIa" firstAttribute="leading" secondItem="paJ-sL-eG8" secondAttribute="trailing" constant="8" id="dIF-Wq-BvH"/>
+                            <constraint firstItem="QKe-xs-iIa" firstAttribute="leading" secondItem="gAD-co-9Yz" secondAttribute="leading" constant="25" id="jBi-cw-9H7"/>
+                            <constraint firstItem="paJ-sL-eG8" firstAttribute="centerY" secondItem="QKe-xs-iIa" secondAttribute="centerY" id="l0Q-As-rUA"/>
+                            <constraint firstItem="gAD-co-9Yz" firstAttribute="top" secondItem="yCP-fc-KEd" secondAttribute="top" constant="33" id="l1y-gE-FBd"/>
+                            <constraint firstItem="wmy-Vm-jj1" firstAttribute="trailing" secondItem="QKe-xs-iIa" secondAttribute="trailing" id="nAt-2P-GU0"/>
+                            <constraint firstItem="Nmq-bG-MZL" firstAttribute="leading" secondItem="QKe-xs-iIa" secondAttribute="trailing" id="nNT-SI-J1M"/>
+                            <constraint firstItem="wmy-Vm-jj1" firstAttribute="top" secondItem="QKe-xs-iIa" secondAttribute="bottom" constant="124" id="ols-fO-13j"/>
+                            <constraint firstItem="wmy-Vm-jj1" firstAttribute="centerX" secondItem="QKe-xs-iIa" secondAttribute="centerX" id="q52-02-PhB"/>
+                            <constraint firstItem="wmy-Vm-jj1" firstAttribute="leading" secondItem="QKe-xs-iIa" secondAttribute="leading" id="q54-4p-r0h"/>
+                            <constraint firstItem="QKe-xs-iIa" firstAttribute="trailing" secondItem="gAD-co-9Yz" secondAttribute="trailing" constant="-25" id="sv3-45-asQ"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="yCP-fc-KEd"/>
                     </view>
+                    <navigationItem key="navigationItem" id="T1q-cB-X74"/>
+                    <connections>
+                        <outlet property="btnClear" destination="Nmq-bG-MZL" id="Vv5-ri-8Zu"/>
+                        <outlet property="btnForecast" destination="wmy-Vm-jj1" id="Rko-EI-j9Q"/>
+                        <outlet property="imgSearch" destination="paJ-sL-eG8" id="jHP-4n-hrr"/>
+                        <outlet property="lblError" destination="z0E-ES-huf" id="086-1p-Xsv"/>
+                        <outlet property="lblMsg" destination="gAD-co-9Yz" id="xCP-z6-RsU"/>
+                        <outlet property="txtSearchField" destination="QKe-xs-iIa" id="7Zu-98-nRz"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vh9-rb-j8f" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="191" y="232"/>
+            <point key="canvasLocation" x="592.79999999999995" y="231.63418290854574"/>
+        </scene>
+        <!--Forecast View Controller-->
+        <scene sceneID="zku-RG-Aun">
+            <objects>
+                <viewController restorationIdentifier="ForecastViewController" storyboardIdentifier="ForecastViewController" id="4dc-Hc-xJv" customClass="ForecastViewController" customModule="WeatherApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="7fu-vB-Gaq">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="wv0-qX-srb">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="4dc-Hc-xJv" id="O2S-9E-xhV"/>
+                                    <outlet property="delegate" destination="4dc-Hc-xJv" id="xov-cn-hTM"/>
+                                    <outlet property="prefetchDataSource" destination="4dc-Hc-xJv" id="Mft-jo-WQ8"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="JKI-jx-4EB" firstAttribute="bottom" secondItem="wv0-qX-srb" secondAttribute="bottom" id="Gk6-Id-iCv"/>
+                            <constraint firstItem="wv0-qX-srb" firstAttribute="top" secondItem="JKI-jx-4EB" secondAttribute="top" id="bwa-mC-lWt"/>
+                            <constraint firstItem="wv0-qX-srb" firstAttribute="leading" secondItem="JKI-jx-4EB" secondAttribute="leading" id="i7R-JG-LmC"/>
+                            <constraint firstItem="JKI-jx-4EB" firstAttribute="trailing" secondItem="wv0-qX-srb" secondAttribute="trailing" id="oES-lZ-b9R"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="JKI-jx-4EB"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="N04-t6-Hbq" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1423" y="237"/>
+        </scene>
+        <!--Detail View Controller-->
+        <scene sceneID="4iC-qB-a0I">
+            <objects>
+                <viewController restorationIdentifier="DetailViewController" storyboardIdentifier="DetailViewController" id="V50-sA-Vaf" customClass="DetailViewController" customModule="WeatherApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="dbB-uU-8Zi">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="pMX-v5-WjF"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6ZB-Bu-9FJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2394" y="232"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="3aB-7p-v5j">
+            <objects>
+                <navigationController restorationIdentifier="NavViewController" storyboardIdentifier="NavViewController" automaticallyAdjustsScrollViewInsets="NO" id="Qnw-Jm-3wF" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="el4-AT-gEQ">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Wk9-mu-HbK" kind="relationship" relationship="rootViewController" id="wU3-Hz-db9"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="VqI-NG-Rco" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-289" y="232"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="ico_clear" width="256" height="256"/>
+        <image name="ico_search" width="256" height="256"/>
+    </resources>
 </document>

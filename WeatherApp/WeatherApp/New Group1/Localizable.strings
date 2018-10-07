@@ -1,0 +1,21 @@
+/* 
+  File.strings
+  WeatherApp
+
+  Created by Alejandro Fernández Ruiz on 7/10/18.
+  Copyright © 2018 personal. All rights reserved.
+*/
+
+
+/**
+ *
+ * HomeViewController
+ */
+"home_title"            =   "Search";
+"home_desc"             =   "You need to insert the city name to find the next day forecasting";
+"home_generic_error"    =   "An error happens!";
+"home_plahceholder_txt" =   "City name";
+"home_search_button"    =   "FORECAST";
+
+
+
