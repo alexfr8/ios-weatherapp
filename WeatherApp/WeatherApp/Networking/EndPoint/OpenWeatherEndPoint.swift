@@ -18,6 +18,7 @@ public enum OpenWeatherEndPoint {
     
     
     case forecastSevendDaysByCityName(city:String)
+    case forecastSevendDaysByCoord(lat:Double, long: Double)
     
 }
 
@@ -45,19 +46,13 @@ extension OpenWeatherEndPoint: EndPointType {
         case .forecastSevendDaysByCityName( _):
             return "/data/2.5/forecast"
                 //q=London&mode=xml&units=metric&cnt=7
+        case .forecastSevendDaysByCoord:
+            return "/data/2.5/forecast"
+            ///data/2.5/forecast/daily?lat={lat}&lon={lon}&cnt={cnt}
         }
         
-        /*    case .recommended(let id):
-         return "\(id)/recommendations"
-         case .popular:
-         return "popular"
-         case .newMovies:
-         return "now_playing"
-         case .video(let id):
-         return "\(id)/videos"
-         }*/
         
-        
+    
     }
     
     
@@ -65,6 +60,8 @@ extension OpenWeatherEndPoint: EndPointType {
         switch self {
         
         case .forecastSevendDaysByCityName( _):
+            return .get
+        case .forecastSevendDaysByCoord( _, _):
             return .get
         }
     }
@@ -82,6 +79,15 @@ extension OpenWeatherEndPoint: EndPointType {
             
        
         
+        case .forecastSevendDaysByCoord(let lat, let long):
+            return .requestParameters(bodyParameters: [:],
+                                      bodyEncoding: .urlEncoding,
+                                      urlParameters: ["lat": String(format:"%.8f",  lat),
+                                                      "lon":String(format:"%.8f",  long),
+                                                      "mode":"json",
+                                                      "units":"metric",
+                                                      "cnt":"60",
+                                                      "appid":Constants.OpenWeatherAPIKEY])
         }
     }
     

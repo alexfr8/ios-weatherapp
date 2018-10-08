@@ -19,6 +19,7 @@ class HomeViewController: BaseViewController {
     @IBOutlet weak var btnClear: UIButton!
     @IBOutlet weak var lblError: UILabel!
     @IBOutlet weak var btnForecast: UIButtonRounded!
+    @IBOutlet weak var btnGPS: UIButtonRounded!
     
     
     //MARK: - Private data
@@ -37,6 +38,11 @@ class HomeViewController: BaseViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        presenter.performCoreLocationPermissions()
+        
+    }
     
     // MARK: - IBACTIONS
     
@@ -52,6 +58,10 @@ class HomeViewController: BaseViewController {
         presenter.manageTextFieldComplements(value: txtSearchField.text!)
     }
     
+    @IBAction func btnGPS(_ sender: Any) {
+        txtSearchField.text=""
+        presenter.performSearchCoordinatesForecast()
+    }
     
     // MARK: - Navigation
 
