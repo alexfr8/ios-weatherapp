@@ -18,4 +18,14 @@
 "home_search_button"    =   "FORECAST";
 
 
-
+/**
+ *
+ * DetailViewController
+ */
+"detail_min"            =   "Min: ";
+"detail_max"            =   "Max: ";
+"detail_night"          =   "Night: ";
+"detail_evening"        =   "Evening: ";
+"detail_morning"        =   "Morning: ";
+"detail_wind_speed"     =   "Wind speed: ";
+"detail_clouds"         =   "Clouds: ";

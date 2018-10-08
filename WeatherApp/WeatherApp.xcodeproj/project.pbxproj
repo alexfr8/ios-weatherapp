@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		5E47027935B9F15476EF87F7 /* Pods_WeatherApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 970B71AC2EEF3535086A39B9 /* Pods_WeatherApp.framework */; };
+		C14E6607216BC114004496C7 /* BorderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C14E6606216BC114004496C7 /* BorderView.swift */; };
 		C1561D5B2168D4E400214DAE /* JSONParameterEncoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1561D5A2168D4E400214DAE /* JSONParameterEncoder.swift */; };
 		C1561D5D2168D50500214DAE /* ParameterEncoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1561D5C2168D50500214DAE /* ParameterEncoding.swift */; };
 		C1561D5F2168D51E00214DAE /* URLParameterEncoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1561D5E2168D51E00214DAE /* URLParameterEncoding.swift */; };
@@ -52,6 +53,7 @@
 /* Begin PBXFileReference section */
 		952A4BF09659979A0B431307 /* Pods-WeatherApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeatherApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WeatherApp/Pods-WeatherApp.debug.xcconfig"; sourceTree = "<group>"; };
 		970B71AC2EEF3535086A39B9 /* Pods_WeatherApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WeatherApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C14E6606216BC114004496C7 /* BorderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BorderView.swift; sourceTree = "<group>"; };
 		C1561D5A2168D4E400214DAE /* JSONParameterEncoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONParameterEncoder.swift; sourceTree = "<group>"; };
 		C1561D5C2168D50500214DAE /* ParameterEncoding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParameterEncoding.swift; sourceTree = "<group>"; };
 		C1561D5E2168D51E00214DAE /* URLParameterEncoding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLParameterEncoding.swift; sourceTree = "<group>"; };
@@ -242,6 +244,7 @@
 			isa = PBXGroup;
 			children = (
 				C1A8886F216A6180008B4F2B /* UIButtonRounded.swift */,
+				C14E6606216BC114004496C7 /* BorderView.swift */,
 			);
 			path = CustomViews;
 			sourceTree = "<group>";
@@ -428,6 +431,7 @@
 				C1D37B292168CEE7009D7619 /* WeatherApp.xcdatamodeld in Sources */,
 				C1A88867216A5D57008B4F2B /* ForecastViewController.swift in Sources */,
 				C1A88875216A6E10008B4F2B /* Color.swift in Sources */,
+				C14E6607216BC114004496C7 /* BorderView.swift in Sources */,
 				C1D37B212168CEE7009D7619 /* AppDelegate.swift in Sources */,
 				C1561D632168D67600214DAE /* EndPointType.swift in Sources */,
 				C1561D5B2168D4E400214DAE /* JSONParameterEncoder.swift in Sources */,

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import PKHUD
 
 class ForecastViewController: BaseViewController {
 
@@ -68,15 +69,29 @@ extension ForecastViewController : ForecastVCDelegate {
     func navigateToDetail(detailForecast: Forecast) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let detailVC = storyboard.instantiateViewController(withIdentifier :"DetailViewController") as! DetailViewController
+        detailVC.forecast = detailForecast
+        detailVC.sevendaysForecast = self.forecast
         self.navigationController?.pushViewController(detailVC, animated: true)
     }
     
     func showProgress(msg: String) {
         
+        DispatchQueue.main.async {
+            HUD.dimsBackground = false
+            HUD.allowsInteraction = false
+            HUD.show(.progress)
+            
+        }
     }
     
     func hideProgress() {
         
+        DispatchQueue.main.async {
+            HUD.dimsBackground = true
+            HUD.allowsInteraction = true
+            HUD.hide()
+            
+        }
     }
     
     func setupView() {

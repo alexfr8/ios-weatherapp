@@ -18,12 +18,12 @@ protocol DetailVCDelegate{
 
 class DetailPresenter : BasePresenter{
     
-    var delegate: ForecastVCDelegate!
-    var networkManager: OpenWeatherManager!
+    var delegate: DetailVCDelegate!
+  //var networkManager: OpenWeatherManager!
     
-    init(delegate: ForecastVCDelegate) {
+    init(delegate: DetailVCDelegate) {
         self.delegate = delegate
-        self.networkManager = OpenWeatherManager()
+//      self.networkManager = OpenWeatherManager()
     }
     
     func setupUI() {
