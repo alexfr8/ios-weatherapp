@@ -14,4 +14,6 @@ import Foundation
 
 struct Constants {
     static let OpenWeatherAPIKEY = "7572efbfacd56f48264888427c94da6e"
+    static let OpenWeatherIconURL = "https://openweathermap.org/img/w/"
+    static let iconExtension = ".png"
 }

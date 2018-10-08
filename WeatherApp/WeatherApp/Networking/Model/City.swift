@@ -13,7 +13,7 @@ struct City {
     let name: String
     let coord : Coordinate
     let country: String
-    let population: Int
+    //let population: Int
 }
 
 extension City: Decodable {
@@ -23,7 +23,7 @@ extension City: Decodable {
         case name = "name"
         case coord = "coord"
         case country  = "country"
-        case population = "population"
+       // case population = "population"
         
     }
     
@@ -35,7 +35,7 @@ extension City: Decodable {
         name = try container.decode(String.self, forKey: .name)
         coord = try container.decode(Coordinate.self, forKey: .coord)
         country = try container.decode(String.self, forKey: .country)
-        population = try container.decode(Int.self, forKey: .population)
+       // population = try container.decode(Int.self, forKey: .population)
         
     }
 }

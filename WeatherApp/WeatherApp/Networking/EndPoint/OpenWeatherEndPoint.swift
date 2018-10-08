@@ -76,9 +76,9 @@ extension OpenWeatherEndPoint: EndPointType {
                                       bodyEncoding: .urlEncoding ,
                                       urlParameters: ["q":city,
                                                       "mode":"json",
-                                                      "units":"metrics",
-                                                      "cnt":"7",
-                                                    "appid":Constants.OpenWeatherAPIKEY])
+                                                      "units":"metric",
+                                                      "cnt":"60",
+                                                      "appid":Constants.OpenWeatherAPIKEY])
             
        
         

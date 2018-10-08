@@ -37,4 +37,26 @@ extension SevenDaysForecasting: Decodable {
         cnt = try container.decode(Int.self, forKey: .cnt)
         list = try container.decode([Forecast].self, forKey: .list)
     }
+    
+    func getFilteredList() -> [Forecast]{
+        
+        var results = [Forecast]()
+        var clear : Bool = true
+        
+        for forecast in list {
+            clear = true
+            let candidateDate = Date.getFormattedDate(string: forecast.dt_txt, formatter: "")
+            for existent in results {
+                let existentDate = Date.getFormattedDate(string: existent.dt_txt, formatter: "")
+                if (candidateDate.elementsEqual(existentDate)) {
+                    clear = false
+                }
+            }
+            if (clear) {
+                results.append(forecast)
+            }
+        }
+        
+        return results
+    }
 }

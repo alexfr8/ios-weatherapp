@@ -7,3 +7,27 @@
 //
 
 import Foundation
+
+
+protocol DetailVCDelegate{
+    func showProgress(msg:String)
+    func hideProgress()
+    func setupView()
+    func showError(error: String)
+}
+
+class DetailPresenter : BasePresenter{
+    
+    var delegate: ForecastVCDelegate!
+    var networkManager: OpenWeatherManager!
+    
+    init(delegate: ForecastVCDelegate) {
+        self.delegate = delegate
+        self.networkManager = OpenWeatherManager()
+    }
+    
+    func setupUI() {
+        self.delegate.setupView()
+    }
+}
+
